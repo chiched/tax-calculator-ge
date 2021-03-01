@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.css"
+      media="screen,projection"
+    />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <title>Calculateur d'impôt voiture</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+    <link rel="manifest" href="/images/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+  </head>
+
+  <body>
+    <header class="red lighten-2">    
+      <div class="container">
+        <div class="row">
+          <div class="col l12">
+            <h4 class="white-text"><i class="material-icons white-text" style="font-size: 37px;">directions_car</i>Calculateur d'impôt</h1><p class="white-text">pour voiture de tourisme (Genève)</p>
+  
+          </div>
+        </div>
+      </div>
+
+</header>
+
+    <main>
+    <div class="container">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row">
+        <div class="col l12">
+          <div class="card-panel grey lighten-4">          
+            <form id="form">
+            <div class="row">
+              <div class="input-field col s6">
+                <input placeholder="0" id="power" type="text" class="validate grey-text text-darken-3" />
+                <label for="first_name">Puissance</label>
+              </div>
+              <div class="input-field col s6">
+                <p class="left">
+                  <label>
+                    <input
+                      class="with-gap"
+                      value="kw"
+                      name="units"
+                      type="radio"
+                      checked
+                    />
+                    <span>kw</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input class="with-gap" value="cv" name="units" type="radio" />
+                    <span>cv</span>
+                  </label>
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <p class="grey-text text-darken-3">
+                Première mise en circulation du véhicule après 01/01/2010?
+              </p>
+              <p class="left">
+                <label>
+                  <input
+                    class="with-gap"
+                    name="recentCar"
+                    type="radio"
+                    value="yes"
+                    onClick="showEmissionsInput()"
+                    checked
+                  />
+                  <span>oui</span>
+                </label>
+              </p>
+              <p class="left">
+                <label>
+                  <input
+                    class="with-gap"
+                    name="recentCar"
+                    type="radio"
+                    value="no"
+                    onClick="hideEmissionsInput()"
+                  />
+                  <span>non</span>
+                </label>
+              </p>
+            </div>
+            <div id="emissionsInput" class="row">
+              <div class="input-field col s6">
+                <input
+                  placeholder="0"
+                  id="emissions"
+                  type="text"
+                  class="validate grey-text text-darken-3"
+                />
+                <label for="emissions">Emissions (g/km)</label>
+              </div>
+            </div>
+            <div class="row">
+              <button
+                class="btn waves-effect waves-light"
+                type="submit"
+                name="action"
+              >
+                Calculer
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </form></div>
+
+        </div>
+        <div class="col l12">
+          <div  id="resultForm" class="card grey lighten-4 hidden">
+            <div class="card-content black-text">
+              <span class="card-title grey-text text-darken-3">Votre impôt:</span>
+              <h4 id="total" class="red-text text-lighten-2"></h4>
+              <div id="detail" class="grey-text text-darken-3"></div>
+            </div>
+            <div class="card-action">
+              <a href="#" onClick="resetForm(event)" class="red-text text-lighten-2">Faire un nouveau calcul</a>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </main>
+  <div class="bottom-banner">
+
+</div>
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l12 s12">
+            <h5 class="white-text"><sup>*</sup> Disclaimer: </h5>
+            <p class="grey-text text-lighten-4">Ce calcul n'est qu'une indication. Pour connaître le montant exact, veuillez vous rendre sur le site <a href="https://www.ge.ch/impot-vehicules/baremes-impot" target="_blank">ge.ch</a>
+            <br>Le montant de l'impôt dépend, en premier lieu, de la puissance du moteur en kW (1kW = 1,36 CV-DIN) et en deuxième lieu, du taux d'émission de la voiture. Pour le calcul du bonus/malus les données suivantes sont prises en compte:
+                <ul>
+                  <li>50 % bonus si CO2 <= 120 g/km</li>
+                  <li>50 % malus si CO2 > 200 g/km </li>
+                </ul>
+                Pour les voitures mises en circulation avant 01/01/2010, le taux d'émission n'est pas prix en compte.</p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2021 Copyright - Dernière mise à jour: 01/03/2021
+        </div>
+      </div>
+    </footer>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>
