@@ -13,7 +13,7 @@ header p {
   margin: 0 0 0 48px;
 }
 
-header i {
+header i.material-icons {
   font-size: 37px;
   vertical-align: top;
   margin: -3px 10px 0 0;
@@ -22,6 +22,24 @@ header i {
 .bottom-banner {
   height: 200px;
   background: url("../images/navigator.svg") left bottom transparent no-repeat;
+}
+
+@media only screen and (max-width: 600px) {
+  header h4 {
+    font-size: 1.7rem;
+  }
+
+  header p {
+    margin: 0 0 0 40px;
+  }
+
+  header i.material-icons {
+    font-size: 28px;
+  }
+
+  .bottom-banner {
+    background-position: -70px bottom;
+  }
 }
 
 footer a {
