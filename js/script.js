@@ -172,7 +172,7 @@ const hideResultForm = () => {
   const input = document.getElementById("resultForm");
   input.classList.add("hidden");
 
-  const details = document.getElementsByClassName("details")
+  const details = document.getElementsByClassName("details");
   for (let i = 0; i < details.length; i++) {
     details[i].classList.add("hidden");
   }
@@ -196,20 +196,20 @@ function submit(event) {
   if (power == false || !Number.isInteger(+power)) {
     document.getElementById("power").classList.add("invalid");
     hideResultForm();
-    return
+    return;
   }
- 
-  if (newCar === 'yes' && (emissions === '' || !Number.isInteger(+emissions))) {
+
+  if (newCar === "yes" && (emissions === "" || !Number.isInteger(+emissions))) {
     document.getElementById("emissions").classList.add("invalid");
     hideResultForm();
-    return
+    return;
   }
 
   hideResultForm();
   showResultForm();
 
   const baseTax = calcTax(powerKw);
-  const bonusMalus = (baseTax / 2);
+  const bonusMalus = baseTax / 2;
 
   let resultDetail = "";
   let total = baseTax;
@@ -222,25 +222,24 @@ function submit(event) {
       detailDiv.classList.remove("hidden");
     } else if (emissions >= 0 && emissions <= 120) {
       total = baseTax - bonusMalus;
-      const detailDiv = document.getElementById("details-bonus")
+      const detailDiv = document.getElementById("details-bonus");
       const detailSpan1 = detailDiv.getElementsByTagName("span")[0];
       const detailSpan2 = detailDiv.getElementsByTagName("span")[1];
-      detailSpan1.innerHTML = baseTax
-      detailSpan2.innerHTML = bonusMalus
+      detailSpan1.innerHTML = baseTax;
+      detailSpan2.innerHTML = bonusMalus;
       detailDiv.classList.remove("hidden");
     } else if (emissions > 200) {
       total = baseTax + bonusMalus;
-      const detailDiv = document.getElementById("details-malus")
+      const detailDiv = document.getElementById("details-malus");
       const detailSpan1 = detailDiv.getElementsByTagName("span")[0];
       const detailSpan2 = detailDiv.getElementsByTagName("span")[1];
-      detailSpan1.innerHTML = baseTax
-      detailSpan2.innerHTML = bonusMalus
+      detailSpan1.innerHTML = baseTax;
+      detailSpan2.innerHTML = bonusMalus;
       detailDiv.classList.remove("hidden");
     } else {
       total = baseTax;
       resultDetail = "";
     }
-
   }
 
   const totalDiv = document.getElementById("total");
@@ -249,10 +248,10 @@ function submit(event) {
 
 const resetForm = (event) => {
   event.preventDefault();
-  document.getElementById("power").value = '';
+  document.getElementById("power").value = "";
   form.elements.units.value = "kw";
   form.elements.recentCar.value = "yes";
-  document.getElementById("emissions").value = '';
+  document.getElementById("emissions").value = "";
   showEmissionsInput();
   hideResultForm();
-}
+};
