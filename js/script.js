@@ -142,7 +142,7 @@ const taxTable = [
 ];
 
 const round5 = (x) => {
-  return Math.ceil(x / 5) * 5;
+  return Math.floor(x / 5) * 5;
 };
 
 const calcHighkw = (kw) => {
@@ -171,23 +171,42 @@ const showEmissionsInput = () => {
 const hideResultForm = () => {
   const input = document.getElementById("resultForm");
   input.classList.add("hidden");
+
+  const details = document.getElementsByClassName("details")
+  for (let i = 0; i < details.length; i++) {
+    details[i].classList.add("hidden");
+  }
 };
 const showResultForm = () => {
   const input = document.getElementById("resultForm");
   input.classList.remove("hidden");
 };
-const form = document.getElementById("form");
 
 form.onsubmit = submit;
 
 function submit(event) {
   event.preventDefault();
-  showResultForm();
+
   const power = document.getElementById("power").value;
   const units = form.elements.units.value;
   const newCar = form.elements.recentCar.value;
   const emissions = document.getElementById("emissions").value;
   const powerKw = units === "kw" ? power : power * 0.7457;
+
+  if (power == false || !Number.isInteger(+power)) {
+    document.getElementById("power").classList.add("invalid");
+    hideResultForm();
+    return
+  }
+ 
+  if (newCar === 'yes' && (emissions === '' || !Number.isInteger(+emissions))) {
+    document.getElementById("emissions").classList.add("invalid");
+    hideResultForm();
+    return
+  }
+
+  hideResultForm();
+  showResultForm();
 
   const baseTax = calcTax(powerKw);
   const bonusMalus = (baseTax / 2);
@@ -198,13 +217,25 @@ function submit(event) {
   if (newCar === "yes") {
     if (emissions === undefined) {
       total = baseTax;
-      resultDetail = "Nous ne pouvons calculer votre bonus/malus. Veuillez indiquer votre taux d'émission pour un calcul correct.";
+
+      const detailDiv = document.getElementById("details-missing-info");
+      detailDiv.classList.remove("hidden");
     } else if (emissions >= 0 && emissions <= 120) {
       total = baseTax - bonusMalus;
-      resultDetail = `Détail: Taxe de base (${baseTax} CHF/an) - bonus (${bonusMalus} CHF/an)`;
+      const detailDiv = document.getElementById("details-bonus")
+      const detailSpan1 = detailDiv.getElementsByTagName("span")[0];
+      const detailSpan2 = detailDiv.getElementsByTagName("span")[1];
+      detailSpan1.innerHTML = baseTax
+      detailSpan2.innerHTML = bonusMalus
+      detailDiv.classList.remove("hidden");
     } else if (emissions > 200) {
-      total = baseTax + bonusMalus
-      resultDetail = `Détail: Taxe de base (${baseTax} CHF/an) + malus (${bonusMalus} CHF/an)`;
+      total = baseTax + bonusMalus;
+      const detailDiv = document.getElementById("details-malus")
+      const detailSpan1 = detailDiv.getElementsByTagName("span")[0];
+      const detailSpan2 = detailDiv.getElementsByTagName("span")[1];
+      detailSpan1.innerHTML = baseTax
+      detailSpan2.innerHTML = bonusMalus
+      detailDiv.classList.remove("hidden");
     } else {
       total = baseTax;
       resultDetail = "";
@@ -213,14 +244,7 @@ function submit(event) {
   }
 
   const totalDiv = document.getElementById("total");
-  totalDiv.innerHTML = total + " CHF/an<sup>*</sup>";
-  
-  const detailDiv = document.getElementById("detail");
-  detailDiv.innerHTML = resultDetail;
-  console.log('total', total)
-  console.log('bonusMalusResult', resultDetail)
-  console.log('baseTax', baseTax)
-  // For this example, don't actually submit the form
+  totalDiv.innerHTML = total;
 }
 
 const resetForm = (event) => {

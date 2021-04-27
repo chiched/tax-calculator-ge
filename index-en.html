@@ -65,15 +65,15 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v10.0&appId=354765029290389&autoLogAppEvents=1" nonce="vZNt49N4"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=263959397005594&autoLogAppEvents=1" nonce="w9SxsMKm"></script>
         <header class="red lighten-2">    
           <div class="container">
             <div class="row">
               <div class="col s8 l10">
-                <h4 class="white-text"><i class="material-icons white-text">directions_car</i>Calculateur d'impôt</h1><p class="white-text">pour voiture de tourisme (Genève)</p>
+                <h4 class="white-text"><i class="material-icons white-text">directions_car</i>Tax calculator</h1><p class="white-text">for passenger cars (Geneva)</p>
               </div>
               <div class="col s4 l2" style="text-align: right;">
-                <a style="margin-right: 15px;" class="waves-effect waves-light btn-small" href="/index-en.html">EN</a>                   
+                <a style="margin-right: 15px;" class="waves-effect waves-light btn-small" href="/index.html">FR</a>                   
               </div>
             </div>
           </div>
@@ -87,12 +87,12 @@
         <div class="col l12 s12 m12">
           <div class="card-panel grey lighten-4">          
             <form id="form">
-              <div class="fb-share-button" style="float: right;" data-href="https://impot-voiture-geneve.ch" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fimpot-voiture-geneve.ch%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Partager</a></div>
+              <div class="fb-share-button" style="float: right;" data-href="https://impot-voiture-geneve.ch/index-en.html" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fimpot-voiture-geneve.ch%2Findex-en.html&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
             <div class="row">
               <div class="input-field col s6">
                 <input placeholder="0" id="power" type="text" class="validate grey-text text-darken-3" />
-                <label for="first_name">Puissance</label>
-                <span class="helper-text" data-error="Champ obligatoire"></span>
+                <label for="first_name">Power</label>
+                <span class="helper-text" data-error="Mandatory field"></span>
               </div>
               <div class="input-field col s6">
                 <p class="left">
@@ -117,7 +117,7 @@
             </div>
             <div class="row">
               <p class="grey-text text-darken-3">
-                Première mise en circulation du véhicule après 01/01/2010?
+                First registration of the vehicle after 01/01/2010?
               </p>
               <p class="left">
                 <label>
@@ -129,7 +129,7 @@
                     onClick="showEmissionsInput()"
                     checked
                   />
-                  <span>oui</span>
+                  <span>yes</span>
                 </label>
               </p>
               <p class="left">
@@ -141,7 +141,7 @@
                     value="no"
                     onClick="hideEmissionsInput()"
                   />
-                  <span>non</span>
+                  <span>no</span>
                 </label>
               </p>
             </div>
@@ -154,7 +154,7 @@
                   class="validate grey-text text-darken-3"
                 />
                 <label for="emissions">Emissions (g/km)</label>
-                <span class="helper-text" data-error="Champ obligatoire"></span>
+                <span class="helper-text" data-error="Mandatory field"></span>
               </div>
             </div>
             <div class="row">
@@ -163,7 +163,7 @@
                 type="submit"
                 name="action"
               >
-                Calculer
+                Calculate
                 <i class="material-icons right">send</i>
               </button>
             </div>
@@ -173,14 +173,14 @@
         <div class="col l12 s12 m12">
           <div  id="resultForm" class="card grey lighten-4 hidden">
             <div class="card-content black-text">
-              <span class="card-title grey-text text-darken-3">Votre impôt:</span>
-              <h4 class="red-text text-lighten-2"><span id="total"></span> CHF/an<sup>*</sup></h4>
+              <span class="card-title grey-text text-darken-3">Your tax:</span>
+              <h4 class="red-text text-lighten-2"><span id="total"></span> CHF/year<sup>*</sup></h4>
               <div id="details-missing-info" class="grey-text text-darken-3 hidden details">Nous ne pouvons calculer votre bonus/malus. Veuillez indiquer votre taux d'émission pour un calcul correct.</div>
-              <div id="details-bonus" class="grey-text text-darken-3 hidden details">Détail: Taxe de base (<span></span> CHF/an) - bonus (<span></span> CHF/an)</div>
-              <div id="details-malus" class="grey-text text-darken-3 hidden details">Détail: Taxe de base (<span></span> CHF/an) + malus (<span></span> CHF/an)</div>      
+              <div id="details-bonus" class="grey-text text-darken-3 hidden details">Detail: Base tax (<span></span> CHF/year) - bonus (<span></span> CHF/year)</div>
+              <div id="details-malus" class="grey-text text-darken-3 hidden details">Detail: Base tax (<span></span> CHF/year) + malus (<span></span> CHF/year)</div>      
             </div>
             <div class="card-action">
-              <a href="#" onClick="resetForm(event)" class="red-text text-lighten-2">Faire un nouveau calcul</a>
+              <a href="#" onClick="resetForm(event)" class="red-text text-lighten-2">Reset</a>
             </div>
           </div>
       </div>
@@ -194,13 +194,13 @@
       <div class="container">
         <div class="row">
           <div class="col l12 s12">
-            <p class="grey-text text-lighten-4"><sup>*</sup> Ce calcul n'est qu'une indication. Pour connaître le montant exact, veuillez vous rendre sur le site <a href="https://www.ge.ch/impot-vehicules/baremes-impot" target="_blank">ge.ch</a>
-            <br>Le montant de l'impôt dépend, en premier lieu, de la puissance du moteur en kW (1kW = 1,36 CV-DIN) et en deuxième lieu, du taux d'émission de la voiture. Pour le calcul du bonus/malus les données suivantes sont prises en compte:
+            <p class="grey-text text-lighten-4"><sup>*</sup> This calculation is only an indication. To calculate the exact amount, please visit the website <a href="https://www.ge.ch/impot-vehicules/baremes-impot" target="_blank">ge.ch</a>
+            <br>The tax calculation depends firstly, on the power of the engine kW (1kW = 1,36 CV-DIN) and secondly, on the emission rate of the vehicle. For the calculation of the bonus/malus, the following data is taken into account:
                 <ul>
-                  <li>50 % bonus si CO2 <= 120 g/km</li>
-                  <li>50 % malus si CO2 > 200 g/km </li>
+                  <li>50 % bonus if CO2 <= 120 g/km</li>
+                  <li>50 % malus if CO2 > 200 g/km </li>
                 </ul>
-                Pour les voitures mises en circulation avant 01/01/2010, le taux d'émission n'est pas pris en compte.</p>
+                For cars that were first registered before 01/01/2010, the emission rate isn't taken into account.</p>
             
           </div>
         </div>
@@ -208,7 +208,7 @@
       <div class="footer-copyright">
         <div class="container">
           <div class="row">
-            <div class="col l6">© 2021 Copyright - Dernière mise à jour: 27/04/2021</div>
+            <div class="col l6">© 2021 Copyright - Last update: 27/04/2021</div>
             <div class="col l6 right-align">&#105;&#110;&#102;&#111;&#064;&#105;&#109;&#112;&#111;&#116;&#045;&#118;&#111;&#105;&#116;&#117;&#114;&#101;&#045;&#103;&#101;&#110;&#101;&#118;&#101;&#046;&#099;&#104;</div>
           </div>
         </div>
