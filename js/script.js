@@ -142,7 +142,7 @@ const taxTable = [
 ];
 
 const round5 = (x) => {
-  return Math.floor(x / 5) * 5;
+  return Math.ceil(x / 5) * 5;
 };
 
 const calcHighkw = (kw) => {
@@ -191,7 +191,7 @@ function submit(event) {
   const units = form.elements.units.value;
   const newCar = form.elements.recentCar.value;
   const emissions = document.getElementById("emissions").value;
-  const powerKw = units === "kw" ? power : power * 0.7457;
+  const powerKw = units === "kw" ? power : power / 1.36;
 
   if (power == false || !Number.isInteger(+power)) {
     document.getElementById("power").classList.add("invalid");
