@@ -148,22 +148,56 @@
           <div class="col l12 s12 m12">
             <div class="card-panel grey lighten-4">
               <form id="form">
-                <div
-                  class="fb-share-button"
-                  style="float: right"
-                  data-href="https://impot-voiture-geneve.ch"
-                  data-layout="button"
-                  data-size="small"
-                >
-                  <a
-                    target="_blank"
-                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fimpot-voiture-geneve.ch%2F&amp;src=sdkpreparse"
-                    class="fb-xfbml-parse-ignore"
-                    >Partager</a
+                <div class="row" style="margin-bottom: 0">
+                  <div
+                    class="fb-share-button"
+                    style="float: right; margin-right: 20px"
+                    data-href="https://impot-voiture-geneve.ch"
+                    data-layout="button"
+                    data-size="small"
                   >
+                    <a
+                      target="_blank"
+                      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fimpot-voiture-geneve.ch%2F&amp;src=sdkpreparse"
+                      class="fb-xfbml-parse-ignore"
+                      >Partager</a
+                    >
+                  </div>
                 </div>
                 <div class="row">
-                  <div class="input-field col s6">
+                  <div class="input-field col s7">
+                    <p>Inclure le calcul de la future imposition?</p>
+                  </div>
+                  <div class="input-field col s5">
+                    <p class="left">
+                      <label>
+                        <input
+                          class="with-gap"
+                          value="yes"
+                          name="includeNewCalc"
+                          type="radio"
+                          onClick="showNewCalculation()"
+                        />
+                        <span>oui</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input
+                          class="with-gap"
+                          value="no"
+                          name="includeNewCalc"
+                          type="radio"
+                          onClick="hideNewCalculation()"
+                          checked
+                        />
+                        <span>non</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s7">
                     <input
                       placeholder="0"
                       id="power"
@@ -176,7 +210,7 @@
                       data-error="Champ obligatoire"
                     ></span>
                   </div>
-                  <div class="input-field col s6">
+                  <div class="input-field col s5">
                     <p class="left">
                       <label>
                         <input
@@ -202,38 +236,43 @@
                     </p>
                   </div>
                 </div>
-                <div class="row">
-                  <p class="grey-text text-darken-3">
-                    Première mise en circulation du véhicule après 01/01/2010?
-                  </p>
-                  <p class="left">
-                    <label>
-                      <input
-                        class="with-gap"
-                        name="recentCar"
-                        type="radio"
-                        value="yes"
-                        onClick="showEmissionsInput()"
-                        checked
-                      />
-                      <span>oui</span>
-                    </label>
-                  </p>
-                  <p class="left">
-                    <label>
-                      <input
-                        class="with-gap"
-                        name="recentCar"
-                        type="radio"
-                        value="no"
-                        onClick="hideEmissionsInput()"
-                      />
-                      <span>non</span>
-                    </label>
-                  </p>
+                <div class="row" id="firstRegistrationInput">
+                  <div class="input-field col s7">
+                    <p class="grey-text text-darken-3">
+                      Première mise en circulation du véhicule après 01/01/2010?
+                    </p>
+                  </div>
+
+                  <div class="input-field col s5">
+                    <p class="left">
+                      <label>
+                        <input
+                          class="with-gap"
+                          name="recentCar"
+                          type="radio"
+                          value="yes"
+                          onClick="showEmissionsInput()"
+                          checked
+                        />
+                        <span>oui</span>
+                      </label>
+                    </p>
+                    <p class="left">
+                      <label>
+                        <input
+                          class="with-gap"
+                          name="recentCar"
+                          type="radio"
+                          value="no"
+                          onClick="hideEmissionsInput()"
+                        />
+                        <span>non</span>
+                      </label>
+                    </p>
+                  </div>
                 </div>
                 <div id="emissionsInput" class="row">
-                  <div class="input-field col s6 validate">
+                  <div class="input-field col s7 validate">
                     <input
                       placeholder="0"
                       id="emissions"
@@ -247,15 +286,64 @@
                     ></span>
                   </div>
                 </div>
+                <div class="row hidden" id="electricVehiculeInput">
+                  <div class="input-field col s7">
+                    <p>Véhicule 100% électrique ou à hydrogène?</p>
+                  </div>
+                  <div class="input-field col s5">
+                    <p class="left">
+                      <label>
+                        <input
+                          class="with-gap"
+                          value="yes"
+                          name="electricVehicule"
+                          type="radio"
+                          onClick="showWeightInput()"
+                        />
+                        <span>oui</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input
+                          class="with-gap"
+                          value="no"
+                          name="electricVehicule"
+                          type="radio"
+                          onClick="hideWeightInput()"
+                          checked
+                        />
+                        <span>non</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+                <div class="row hidden" id="weightInput">
+                  <div class="input-field col s7 validate">
+                    <input
+                      placeholder="0"
+                      id="weight"
+                      type="text"
+                      class="validate grey-text text-darken-3"
+                    />
+                    <label for="emissions">Poids à vide (kg)</label>
+                    <span
+                      class="helper-text"
+                      data-error="Champ obligatoire"
+                    ></span>
+                  </div>
+                </div>
                 <div class="row">
-                  <button
-                    class="btn waves-effect waves-light"
-                    type="submit"
-                    name="action"
-                  >
-                    Calculer
-                    <i class="material-icons right">send</i>
-                  </button>
+                  <div class="col s12">
+                    <button
+                      class="btn waves-effect waves-light"
+                      type="submit"
+                      name="action"
+                    >
+                      Calculer
+                      <i class="material-icons right">send</i>
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
@@ -290,6 +378,14 @@
                   Détail: Taxe de base (<span></span> CHF/an) + malus (<span
                   ></span> CHF/an)
                 </div>
+              </div>
+              <div class="card-action hidden" id="newResult">
+                <span class="card-title grey-text text-darken-3"
+                  >Votre impôt d'après la nouvelle imposition:</span
+                >
+                <h4 class="purple-text text-lighten-2">
+                  <span id="newTotal"></span> CHF/an<sup>*</sup>
+                </h4>
               </div>
               <div class="card-action">
                 <a
@@ -338,7 +434,7 @@
         <div class="container">
           <div class="row">
             <div class="col l6">
-              © 2021 Copyright - Dernière mise à jour: 27/04/2021
+              © 2021 Copyright - Dernière mise à jour: 09/03/2024
             </div>
             <div class="col l6 right-align">
               &#105;&#110;&#102;&#111;&#064;&#105;&#109;&#112;&#111;&#116;&#045;&#118;&#111;&#105;&#116;&#117;&#114;&#101;&#045;&#103;&#101;&#110;&#101;&#118;&#101;&#046;&#099;&#104;
