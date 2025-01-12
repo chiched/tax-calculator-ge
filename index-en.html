@@ -1,21 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-MW9H994");
-    </script>
-    <!-- End Google Tag Manager -->
-
     <!--Import Google Icon Font-->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -121,14 +106,14 @@
     <header class="red lighten-2">
       <div class="container">
         <div class="row">
-          <div class="col s8 l10">
+          <div class="col s9 l11">
             <h4 class="white-text">
               <i class="material-icons white-text">directions_car</i>Tax
-              calculator
+              calculator 2024
             </h4>
             <p class="white-text">for passenger cars (Geneva)</p>
           </div>
-          <div class="col s4 l2" style="text-align: right">
+          <div class="col s3 l1" style="text-align: right">
             <a
               style="margin-right: 15px"
               class="waves-effect waves-light btn-small"
@@ -165,10 +150,12 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="input-field col s7">
-                    <p>Include the calculation of the future taxation?</p>
+                  <div class="input-field col s8">
+                    <p>
+                      Include the calculation of the future taxation (2025)?
+                    </p>
                   </div>
-                  <div class="input-field col s5">
+                  <div class="input-field col s4">
                     <p class="left">
                       <label>
                         <input
@@ -197,7 +184,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="input-field col s7">
+                  <div class="input-field col s8">
                     <input
                       placeholder="0"
                       id="power"
@@ -210,7 +197,7 @@
                       data-error="Mandatory field"
                     ></span>
                   </div>
-                  <div class="input-field col s5">
+                  <div class="input-field col s4">
                     <p class="left">
                       <label>
                         <input
@@ -237,13 +224,13 @@
                   </div>
                 </div>
                 <div class="row" id="firstRegistrationInput">
-                  <div class="input-field col s7">
+                  <div class="input-field col s8">
                     <p class="grey-text text-darken-3">
                       First registration of the vehicle after 01/01/2010?
                     </p>
                   </div>
 
-                  <div class="input-field col s5">
+                  <div class="input-field col s4">
                     <p class="left">
                       <label>
                         <input
@@ -272,7 +259,7 @@
                   </div>
                 </div>
                 <div id="emissionsInput" class="row">
-                  <div class="input-field col s7 validate">
+                  <div class="input-field col s8 validate">
                     <input
                       placeholder="0"
                       id="emissions"
@@ -287,10 +274,10 @@
                   </div>
                 </div>
                 <div class="row hidden" id="electricVehiculeInput">
-                  <div class="input-field col s7">
+                  <div class="input-field col s8">
                     <p>Vehicle 100% electric or hydrogen?</p>
                   </div>
-                  <div class="input-field col s5">
+                  <div class="input-field col s4">
                     <p class="left">
                       <label>
                         <input
@@ -319,7 +306,7 @@
                   </div>
                 </div>
                 <div class="row hidden" id="weightInput">
-                  <div class="input-field col s7 validate">
+                  <div class="input-field col s8 validate">
                     <input
                       placeholder="0"
                       id="weight"
@@ -413,19 +400,6 @@
                 target="_blank"
                 >ge.ch</a
               >
-              <br />The tax calculation depends firstly, on the power of the
-              engine kW (1kW = 1,36 CV-DIN) and secondly, on the emission rate
-              of the vehicle. For the calculation of the bonus/malus, the
-              following data is taken into account:
-            </p>
-
-            <ul>
-              <li>50 % bonus if CO2 <= 120 g/km</li>
-              <li>50 % malus if CO2 > 200 g/km</li>
-            </ul>
-            <p>
-              For cars that were first registered before 01/01/2010, the
-              emission rate isn't taken into account.
             </p>
           </div>
         </div>
