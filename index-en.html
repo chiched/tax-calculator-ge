@@ -25,7 +25,7 @@
       rel="stylesheet"
       async
     />
-    <title>Calculateur d'impôt pour voiture de tourisme - Genève</title>
+    <title>Tax calculator for passenger cars (Geneva)</title>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -57,11 +57,8 @@
     <!-- og tags for Facebook share -->
     <meta property="og:url" content="https://impot-voiture-geneve.ch" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Calculateur d'impôt" />
-    <meta
-      property="og:description"
-      content="Calculez l'impôt pour votre véhicule"
-    />
+    <meta property="og:title" content="Tax calculator" />
+    <meta property="og:description" content="Calculate your vehicle tax" />
     <meta
       property="og:image"
       content="https://impot-voiture-geneve.ch/images/fb-share-fr.png"
@@ -83,7 +80,7 @@
           <div class="col s9 l11">
             <h4 class="white-text">
               <i class="material-icons white-text">directions_car</i>Tax
-              calculator 2024
+              calculator
             </h4>
             <p class="white-text">for passenger cars (Geneva)</p>
           </div>
@@ -91,8 +88,8 @@
             <a
               style="margin-right: 15px"
               class="waves-effect waves-light btn-small"
-              href="/index.html"
-              >FR</a
+              href="/index-en.html"
+              >EN</a
             >
           </div>
         </div>
@@ -123,21 +120,19 @@
                     >
                   </div>
                 </div>
-                <div class="row">
-                  <div class="input-field col s8">
-                    <p>
-                      Include the calculation of the future taxation (2025)?
-                    </p>
+                <div class="row" id="electricVehiculeInput">
+                  <div class="input-field col s7">
+                    <p>Vehicle 100% electric or hydrogen?</p>
                   </div>
-                  <div class="input-field col s4">
+                  <div class="input-field col s5">
                     <p class="left">
                       <label>
                         <input
                           class="with-gap"
                           value="yes"
-                          name="includeNewCalc"
+                          name="electricVehicule"
                           type="radio"
-                          onClick="showNewCalculation()"
+                          onClick="setIsElectricVehicule()"
                         />
                         <span>yes</span>
                       </label>
@@ -147,85 +142,10 @@
                         <input
                           class="with-gap"
                           value="no"
-                          name="includeNewCalc"
+                          name="electricVehicule"
                           type="radio"
-                          onClick="hideNewCalculation()"
+                          onClick="setIsCombustionEngineVehicule()"
                           checked
-                        />
-                        <span>no</span>
-                      </label>
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s8">
-                    <input
-                      placeholder="0"
-                      id="power"
-                      type="text"
-                      class="validate grey-text text-darken-3"
-                    />
-                    <label for="first_name">Power</label>
-                    <span
-                      class="helper-text"
-                      data-error="Mandatory field"
-                    ></span>
-                  </div>
-                  <div class="input-field col s4">
-                    <p class="left">
-                      <label>
-                        <input
-                          class="with-gap"
-                          value="kw"
-                          name="units"
-                          type="radio"
-                          checked
-                        />
-                        <span>kw</span>
-                      </label>
-                    </p>
-                    <p>
-                      <label>
-                        <input
-                          class="with-gap"
-                          value="cv"
-                          name="units"
-                          type="radio"
-                        />
-                        <span>cv</span>
-                      </label>
-                    </p>
-                  </div>
-                </div>
-                <div class="row" id="firstRegistrationInput">
-                  <div class="input-field col s8">
-                    <p class="grey-text text-darken-3">
-                      First registration of the vehicle after 01/01/2010?
-                    </p>
-                  </div>
-
-                  <div class="input-field col s4">
-                    <p class="left">
-                      <label>
-                        <input
-                          class="with-gap"
-                          name="recentCar"
-                          type="radio"
-                          value="yes"
-                          onClick="showEmissionsInput()"
-                          checked
-                        />
-                        <span>yes</span>
-                      </label>
-                    </p>
-                    <p class="left">
-                      <label>
-                        <input
-                          class="with-gap"
-                          name="recentCar"
-                          type="radio"
-                          value="no"
-                          onClick="hideEmissionsInput()"
                         />
                         <span>no</span>
                       </label>
@@ -233,7 +153,7 @@
                   </div>
                 </div>
                 <div id="emissionsInput" class="row">
-                  <div class="input-field col s8 validate">
+                  <div class="input-field col s7 validate">
                     <input
                       placeholder="0"
                       id="emissions"
@@ -243,44 +163,12 @@
                     <label for="emissions">Emissions (g/km)</label>
                     <span
                       class="helper-text"
-                      data-error="Mandatory field"
+                      data-error="Champ obligatoire"
                     ></span>
                   </div>
                 </div>
-                <div class="row hidden" id="electricVehiculeInput">
-                  <div class="input-field col s8">
-                    <p>Vehicle 100% electric or hydrogen?</p>
-                  </div>
-                  <div class="input-field col s4">
-                    <p class="left">
-                      <label>
-                        <input
-                          class="with-gap"
-                          value="yes"
-                          name="electricVehicule"
-                          type="radio"
-                          onClick="showWeightInput()"
-                        />
-                        <span>yes</span>
-                      </label>
-                    </p>
-                    <p>
-                      <label>
-                        <input
-                          class="with-gap"
-                          value="no"
-                          name="electricVehicule"
-                          type="radio"
-                          onClick="hideWeightInput()"
-                          checked
-                        />
-                        <span>no</span>
-                      </label>
-                    </p>
-                  </div>
-                </div>
                 <div class="row hidden" id="weightInput">
-                  <div class="input-field col s8 validate">
+                  <div class="input-field col s7 validate">
                     <input
                       placeholder="0"
                       id="weight"
@@ -311,35 +199,6 @@
           </div>
           <div class="col l12 s12 m12">
             <div id="resultForm" class="card grey lighten-4 hidden">
-              <div class="card-content black-text">
-                <span class="card-title grey-text text-darken-3"
-                  >Your tax:</span
-                >
-                <h4 class="red-text text-lighten-2">
-                  <span id="total"></span> CHF/year<sup>*</sup>
-                </h4>
-                <div
-                  id="details-missing-info"
-                  class="grey-text text-darken-3 hidden details"
-                >
-                  Nous ne pouvons calculer votre bonus/malus. Veuillez indiquer
-                  votre taux d'émission pour un calcul correct.
-                </div>
-                <div
-                  id="details-bonus"
-                  class="grey-text text-darken-3 hidden details"
-                >
-                  Detail: Base tax (<span></span> CHF/year) - bonus (<span
-                  ></span> CHF/year)
-                </div>
-                <div
-                  id="details-malus"
-                  class="grey-text text-darken-3 hidden details"
-                >
-                  Detail: Base tax (<span></span> CHF/year) + malus (<span
-                  ></span> CHF/year)
-                </div>
-              </div>
               <div class="card-action hidden" id="newResult">
                 <span class="card-title grey-text text-darken-3"
                   >Your tax based on the future taxation:</span
@@ -381,7 +240,7 @@
       <div class="footer-copyright">
         <div class="container">
           <div class="row">
-            <div class="col l6">© 2021 Copyright - Last update: 09/03/2024</div>
+            <div class="col l6">© 2025 Copyright - Last update: 20/02/2025</div>
             <div class="col l6 right-align">
               &#105;&#110;&#102;&#111;&#064;&#105;&#109;&#112;&#111;&#116;&#045;&#118;&#111;&#105;&#116;&#117;&#114;&#101;&#045;&#103;&#101;&#110;&#101;&#118;&#101;&#046;&#099;&#104;
             </div>
